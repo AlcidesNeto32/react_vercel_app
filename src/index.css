@@ -71,3 +71,45 @@ button:focus-visible {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+.book-details-container { 
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.favorites-list-item {
+    border: 1px solid #eee; 
+    padding: 15px; 
+    margin: 10px 0; 
+    border-radius: 4px;
+}
+
+
+
+
+@media (min-width: 768px) {
+    #root main {
+        max-width: 1000px; 
+        margin: 0 auto;   
+        padding: 0 20px;
+    }
+
+    .book-details-container {
+        padding: 25px 30px; 
+    }
+
+    #root main .favorites-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        list-style: none;
+        padding: 0;
+    }
+
+    .favorites-list-item {
+        margin: 0; 
+    }
+}

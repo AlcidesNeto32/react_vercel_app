@@ -4,7 +4,6 @@ import { getFavorites } from '../utils/storage';
 function Favorites() {
   const [favorites, setFavorites] = useState([]);
 
-  // Carrega os favoritos do storage ao carregar a página
   useEffect(() => {
     const savedFavorites = getFavorites(); 
     setFavorites(savedFavorites);
@@ -17,17 +16,14 @@ function Favorites() {
       {favorites.length === 0 ? (
         <p>Você ainda não adicionou nenhum livro aos favoritos.</p>
       ) : (
-        // Exibe os livros em uma lista [cite: 132]
         <ul style={listStyle}>
           {favorites.map((book, index) => (
             <li key={book.number || index} style={listItemStyle}>
               
-              {/* Exibir pelo menos o título do livro (originalTitle) [cite: 133, 134] */}
               <p style={{fontWeight: 'bold', margin: '0 0 5px 0'}}>
                 {book.originalTitle}
               </p>
               
-              {/* Exibição opcional de outros detalhes [cite: 135] */}
               <div style={detailsStyle}>
                 <img 
                     src={book.cover} 

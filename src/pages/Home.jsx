@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 
-// Endpoint obrigatório do livro aleatório
 const RANDOM_BOOK_ENDPOINT = 'https://potterapi-fedeperin.vercel.app/en/books/random';
 
 function Home() {
@@ -11,7 +10,6 @@ function Home() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Função que faz a requisição REST
   const fetchRandomBook = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -32,21 +30,17 @@ function Home() {
     }
   }, []);
 
-  // UseEffect para disparar a requisição à API quando a tela inicial for carregada ou recarregada
   useEffect(() => {
     fetchRandomBook();
   }, [fetchRandomBook]); 
 
-  // Redireciona para a Tela de Detalhes (Tela 2), passando os dados
   const handleCoverClick = () => {
     if (book) {
       navigate(`/details/${book.number}`, { state: { book } });
     }
   };
 
-  // ------------------------------------------------------------------
-  // Renderização
-  // ------------------------------------------------------------------
+  
   if (loading) return <Spinner />;
   if (error) return <p style={errorStyle}>{error}</p>; 
   if (!book) return null;
@@ -54,18 +48,18 @@ function Home() {
   const titleText = `Livro #${book.number} ${book.originalTitle}`; 
 
   return (
-    <div style={containerStyle}> {/* Centralização 1: Container principal centraliza o texto */}
+    <div style={containerStyle}> {}
       <h2>Página Inicial</h2>
       <p>Clique na capa para ver os detalhes do livro.</p>
       
-      {/* bookContainerStyle define o bloco clicável */}
+      {}
       <div style={bookContainerStyle}> 
         
         <img 
           src={book.cover} 
           alt={`Capa do Livro ${book.number}`} 
           onClick={handleCoverClick}
-          style={coverStyle} // Estilo para tamanho da imagem (maior)
+          style={coverStyle} 
           title="Clique para ver detalhes"
         />
         
@@ -84,18 +78,13 @@ function Home() {
   );
 }
 
-// ------------------------------------------------------------------
-// Estilos (Centralização e Tamanho da Imagem)
-// ------------------------------------------------------------------
 
-// 1° Modificação: Centraliza o conteúdo dentro do container
 const containerStyle = { 
   textAlign: 'center', 
   padding: '20px' 
 };
 
-// Contém a capa e o título. O 'inline-block' permite que ele seja centralizado
-// pelo 'textAlign: center' do container pai.
+
 const bookContainerStyle = { 
   display: 'inline-block', 
   cursor: 'pointer', 
@@ -105,9 +94,8 @@ const bookContainerStyle = {
   marginBottom: '20px',
 };
 
-// 2° Modificação: Aumenta o tamanho da imagem
 const coverStyle = { 
-  maxWidth: '250px', // A imagem agora é maior
+  maxWidth: '250px', 
   height: 'auto', 
   marginBottom: '10px' 
 }; 
