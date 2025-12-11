@@ -93,11 +93,11 @@ function BookDetail() {
 
             <div style={buttonsContainerStyle}>
                 <button onClick={handleGoBack} style={{ ...buttonStyle, backgroundColor: '#5cb85c' }}>
-                    Botão 1 - Voltar à Página Inicial
+                     Voltar à Página Inicial
                 </button>
 
                 <button onClick={handleAddToFavorites} style={{ ...buttonStyle, backgroundColor: '#f0ad4e' }}>
-                    Botão 2 - Adicionar aos Favoritos
+                     Adicionar aos Favoritos
                 </button>
             </div>
         </div>
