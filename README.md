@@ -1,4 +1,4 @@
-# Projeto feito com React e Vercel para consumo de uma API sobre livros do Harry Potter
+# 🧙 react_vercel_app
 
 ---
 
@@ -15,7 +15,7 @@ O objetivo principal é demonstrar o consumo de uma API REST pública (Harry Pot
 * **Telas Obrigatórias:** Home, Detalhes do Livro, Favoritos.
 * **Persistência:** Lista de Favoritos salva no `localStorage` do navegador.
 * **Publicação:** Deployed no Vercel.
-* **Critério de Qualidade:** Layout centralizado e organizado, conforme as modificações solicitadas.
+* **Responsividade:** Layout responsivo, centralizado e adaptado para dispositivos móveis e desktop.
 
 ---
 
@@ -59,7 +59,31 @@ O projeto segue a arquitetura de *Container/Componentes/Utils* e utiliza o **Rea
 | :--- | :--- | :--- |
 | `/` | **Tela 1: Página Inicial (Home)** | Busca um **novo** livro aleatório na API. Ao clicar na capa, navega para os detalhes. |
 | `/details/:number` | **Tela 2: Detalhes do Livro** | Exibe capa, título completo e dados técnicos. Possui lógica de *fallback* para buscar os dados na API caso a página seja recarregada (`F5`). |
-| `/favorites` | **Tela 3: Página de Favoritos** | Recupera e exibe a lista de livros favoritos salvos no `localStorage`. |
+| `/favorites` | **Tela 3: Página de Favoritos** | Recupera, exibe e permite remover a lista de livros favoritos salvos no `localStorage`. |
 
 ---
 
+## 📸 4. Screenshots (Prints de Tela)
+
+**Atenção:** Certifique-se de que os arquivos de imagem estão na pasta `assets/` e foram enviados para o GitHub.
+
+### 4.1. Tela 1: Página Inicial (Home)
+
+![Print da Página Inicial com livro aleatório](assets/tela_home.jpeg)
+
+### 4.2. Tela 2: Página de Detalhes do Livro
+
+![Print da Página de Detalhes exibindo capa e dados técnicos](assets/tela_detalhes.jpeg)
+
+### 4.3. Tela 3: Página de Favoritos
+
+![Print da Página de Favoritos com a lista de livros salvos](assets/tela_favoritos.jpeg)
+
+---
+
+## 🔗 5. Link para Avaliação
+
+1.  **Repositório GitHub (Este Link):**
+    `https://github.com/AlcidesNeto32/react_vercel_app?classId=27debfed-e075-469b-83e8-33d7ecd778c9&assignmentId=0d90bb5f-de5a-42b1-bf34-ddb9fb85141a&submissionId=91793bb1-c72b-411f-cfd8-1e7a3ae09445`
+
+---
