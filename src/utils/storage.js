@@ -1,33 +1,30 @@
-const FAVORITES_KEY = 'favoritesBooks';
+const STORAGE_KEY = 'hp_favorites';
 
-/**
- * @returns {Array}
- */
-export const getFavorites = () => {
-  const favoritesJSON = localStorage.getItem(FAVORITES_KEY);
-  
-  try {
-    return favoritesJSON ? JSON.parse(favoritesJSON) : [];
-  } catch (error) {
-    console.error("Erro ao ler favoritos do localStorage:", error);
-    return [];
-  }
+export const addFavorite = (book) => {
+    const favorites = getFavorites();
+    
+    const exists = favorites.some(fav => fav.number === book.number);
+    
+    if (exists) {
+        return false; 
+    }
+    
+    favorites.push(book);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+    return true;
 };
 
-/**
- * @param {Object} book 
- * @returns {boolean}
- */
-export const addFavorite = (book) => {
-  const favorites = getFavorites();
-  
-  const isDuplicate = favorites.some(fav => fav.number === book.number);
-  
-  if (isDuplicate) {
-    return false;
-  }
+export const removeFavorite = (bookNumber) => {
+    let favorites = getFavorites();
+    
+    const updatedFavorites = favorites.filter(fav => fav.number !== bookNumber);
+    
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedFavorites));
+    
+    return updatedFavorites; 
+};
 
-  const newFavorites = [book, ...favorites];
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(newFavorites));
-  return true;
+export const getFavorites = () => {
+    const favoritesString = localStorage.getItem(STORAGE_KEY);
+    return favoritesString ? JSON.parse(favoritesString) : [];
 };

@@ -1,41 +1,56 @@
 import React, { useState, useEffect } from 'react';
-import { getFavorites } from '../utils/storage';
+import { getFavorites, removeFavorite } from '../utils/storage'; 
 
 function Favorites() {
   const [favorites, setFavorites] = useState([]);
-
+  
   useEffect(() => {
-    const savedFavorites = getFavorites(); 
-    setFavorites(savedFavorites);
+    setFavorites(getFavorites());
   }, []);
 
+  const handleRemove = (bookNumber, title) => {
+    const confirmRemove = window.confirm(`Tem certeza que deseja remover "${title}" dos seus favoritos?`);
+
+    if (confirmRemove) {
+        const updatedList = removeFavorite(bookNumber);
+        
+        setFavorites(updatedList);
+    }
+  };
+
+  
   return (
     <div style={containerStyle}>
-      <h2>⭐ Página de Favoritos</h2>
+      <h2>Meus Livros Favoritos</h2>
       
       {favorites.length === 0 ? (
-        <p>Você ainda não adicionou nenhum livro aos favoritos.</p>
+        <p style={{textAlign: 'center', marginTop: '20px'}}>
+            Você ainda não adicionou nenhum livro favorito.
+        </p>
       ) : (
-        <ul style={listStyle}>
-          {favorites.map((book, index) => (
-            <li key={book.number || index} style={listItemStyle}>
+        <ul className="favorites-list">
+          {favorites.map((book) => (
+            <li key={book.number} className="favorites-list-item">
               
-              <p style={{fontWeight: 'bold', margin: '0 0 5px 0'}}>
-                {book.originalTitle}
-              </p>
-              
-              <div style={detailsStyle}>
+              <div style={bookContentStyle}>
                 <img 
-                    src={book.cover} 
-                    alt={`Capa de ${book.originalTitle}`} 
-                    style={imageStyle}
+                  src={book.cover} 
+                  alt={`Capa do Livro ${book.number}`} 
+                  style={coverStyle}
                 />
-                <div style={{ marginLeft: '10px' }}>
-                    <small>Livro #{book.number}</small>
-                    <br />
-                    <small>Publicação: {book.releaseDate}</small>
+                <div style={infoStyle}>
+                    <p style={titleStyle}>{book.originalTitle}</p>
+                    <p><strong>Número:</strong> {book.number}</p>
+                    <p><strong>Páginas:</strong> {book.pages}</p>
                 </div>
               </div>
+
+              <button 
+                onClick={() => handleRemove(book.number, book.originalTitle)} 
+                style={removeButtonStyle}
+              >
+                Remover
+              </button>
             </li>
           ))}
         </ul>
@@ -44,16 +59,37 @@ function Favorites() {
   );
 }
 
-const containerStyle = { maxWidth: '800px', margin: '0 auto', padding: '20px', textAlign: 'center' };
-const listStyle = { listStyleType: 'none', padding: 0 };
-const listItemStyle = { 
-    border: '1px solid #eee', 
-    padding: '15px', 
-    margin: '10px 0', 
-    borderRadius: '4px',
-    textAlign: 'left'
+
+
+const containerStyle = { 
+    maxWidth: '1000px', 
+    margin: '0 auto', 
+    padding: '20px' 
 };
-const detailsStyle = { display: 'flex', alignItems: 'center', marginTop: '10px' };
-const imageStyle = { width: '60px', height: 'auto' };
+
+const bookContentStyle = {
+    display: 'flex',
+    alignItems: 'flex-start',
+    marginBottom: '15px',
+    gap: '15px' 
+};
+
+const infoStyle = { textAlign: 'left' };
+const coverStyle = { 
+    maxWidth: '100px', 
+    height: 'auto',
+    flexShrink: 0 
+};
+const titleStyle = { fontWeight: 'bold', fontSize: '1.1em', marginBottom: '5px' };
+
+const removeButtonStyle = {
+    padding: '8px 15px',
+    backgroundColor: '#dc3545', 
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    width: '100%' 
+};
 
 export default Favorites;
