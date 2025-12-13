@@ -86,15 +86,3 @@ Conforme a especificação, os prints das 3 telas são obrigatórios para a aval
 
 
 ---
-
-## 🔗 5. Links para Avaliação
-
-**Importante:** Estes links devem ser enviados **separadamente no Teams** para a avaliação.
-
-1.  **Repositório GitHub (Este Link):**
-    `https://github.com/SEU-USUARIO/react_vercel_app`
-
-2.  **Aplicação Deployed no Vercel:**
-    `[INSIRA O LINK DO SEU DEPLOY NO VERCEL AQUI]`
-
----
