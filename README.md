@@ -63,26 +63,3 @@ O projeto segue a arquitetura de *Container/Componentes/Utils* e utiliza o **Rea
 
 ---
 
-## 📸 4. Screenshots (Prints de Tela)
-
-Conforme a especificação, os prints das 3 telas são obrigatórios para a avaliação.
-
-### 4.1. Tela 1: Página Inicial (Home)
-
-*(Esta imagem deve mostrar o layout centralizado, a capa do livro e o título.)*
-
-
-
-### 4.2. Tela 2: Página de Detalhes do Livro
-
-*(Esta imagem deve mostrar a capa, os detalhes técnicos, a descrição e os dois botões: Voltar e Adicionar aos Favoritos.)*
-
-
-
-### 4.3. Tela 3: Página de Favoritos
-
-*(Esta imagem deve mostrar a lista de livros que você favoritou, persistidos localmente.)*
-
-
-
----
